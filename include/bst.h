@@ -27,13 +27,13 @@ class BST {
       return root;
     }
 
-  int searchNode(Node* root, T val) {
-      if (root == nullptr)
+  int searchNode(Node* root, T x) {
+      if (root == nullptr) {
           return 0;
-      else {
-          if (root->value == val) return root->count;
-          if (root->value > val) return searchNode(root->left, val);
-          if (root->val < x) return searchNode(root->right, val);
+      } else {
+          if (root->value == x) return root->count;
+          if (root->value > x) return searchNode(root->left, x);
+          if (root->val < x) return searchNode(root->right, x);
       }
   }
 
@@ -47,7 +47,6 @@ class BST {
       else
         return lt + 1;
   }
- 
  public:
   BST():root(nullptr) {}
   void add(T val) {
