@@ -12,30 +12,31 @@ class BST {
     Node *left;
     int count;
 };
-Node *root;
-Node *addNode(Node *root, T x) {
-    if (root == nullptr) {
-        root = new Node;
-        root->val = x;
-        root->left = nullptr;
-        root->right = nullptr;
-    } else {
-        if (root->val > x) root->left = addNode(root->left, x);
-        if (root->val < x) root->right = addNode(root->right, x);
-        if (root->val == x) (root->count)++;
+ private:
+  Node *root;
+  Node *addNode(Node *root, T x) {
+      if (root == nullptr) {
+          root = new Node;
+          root->val = x;
+          root->left = nullptr;
+          root->right = nullptr;
+      } else {
+          if (root->val > x) root->left = addNode(root->left, x);
+          if (root->val < x) root->right = addNode(root->right, x);
+          if (root->val == x) (root->count)++;
+      }
+      return root;
     }
-    return root;
-  }
 
-int value(Node* root, T x) {
-    if (root == nullptr) {
-      return 0;
-    } else {
-        if (root->val == x) return root->count;
-        if (root->val > x) return searchValue(root->left, x);
-        if (root->val < x) return searchValue(root->right, x);
-    }
-}
+  int value(Node* root, T x) {
+      if (root == nullptr) {
+        return 0;
+      } else {
+          if (root->val == x) return root->count;
+          if (root->val > x) return searchValue(root->left, x);
+          if (root->val < x) return searchValue(root->right, x);
+      }
+  }
 
  public:
   BST() : root(nullptr) {}
