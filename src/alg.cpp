@@ -19,7 +19,7 @@ BST<std::string> makeTree(const char* filename) {
             count++;
         }
     }
-    if (count > 0) { add.tree(word); word = "";  count = 0;}
+    if (count > 0) { tree.add(word); word = "";  count = 0;}
 
     file.close();
     return tree;
