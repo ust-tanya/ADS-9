@@ -30,10 +30,13 @@ class BST {
   int searchNode(Node* root, T x) {
       if (root == nullptr) {
           return 0;
-      } 
-      if (root->val == x) return root->count;
-      if (root->val > x) return searchNode(root->left, x);
-      if (root->val < x) return searchNode(root->right, x);
+      } else {
+      if (root->val == x) { 
+        return root->count; 
+      } else {
+      if (root->val > x) {
+        return searchNode(root->left, x);
+      } else { return searchNode(root->right, x); }
   }
 
   int height(Node* root) {
