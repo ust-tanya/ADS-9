@@ -27,20 +27,37 @@ class BST {
       return root;
     }
 
-  int value(Node* root, T x) {
-      if (root == nullptr) {
-        return 0;
-      } else {
-          if (root->val == x) return root->count;
-          if (root->val > x) return searchValue(root->left, x);
-          if (root->val < x) return searchValue(root->right, x);
+  int searchNode(Node* root, T val) {
+      if (root == nullptr)
+          return 0;
+      else {
+          if (root->value == val) return root->count;
+          if (root->value > val) return searchNode(root->left, val);
+          if (root->val < x) return searchNode(root->right, val);
       }
   }
 
+  int height(Node* root) {
+      if (root == nullptr)
+        return 0;
+      if (root->left == nullptr && root->right == nullptr) return 0;
+      int rt = height(root->right), lt = height(root->left);
+      if (rt > lt)
+        return rt + 1;
+      else
+        return lt + 1;
+  }
+ 
  public:
-  BST() : root(nullptr) {}
-  void add(T x) {
-    root = addNode(root, x);
+  BST():root(nullptr) {}
+  void add(T val) {
+      root = addNode(root, val);
+  }
+  int depth() {
+      return height(root);
+  }
+  int search(T val) {
+      return searchNode(root, val);
   }
 };
 
