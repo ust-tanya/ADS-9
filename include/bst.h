@@ -31,10 +31,11 @@ class BST {
       if (root == nullptr) {
           return 0;
       } else {
-          if (root->value == x) return root->count;
-          if (root->value > x) return searchNode(root->left, x);
+          if (root->val == x) return root->count;
+          if (root->val > x) return searchNode(root->left, x);
           if (root->val < x) return searchNode(root->right, x);
       }
+      return;
   }
 
   int height(Node* root) {
@@ -47,6 +48,7 @@ class BST {
       else
         return lt + 1;
   }
+ 
  public:
   BST():root(nullptr) {}
   void add(T val) {
