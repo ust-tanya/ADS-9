@@ -35,7 +35,6 @@ class BST {
           if (root->val > x) return searchNode(root->left, x);
           if (root->val < x) return searchNode(root->right, x);
       }
-      return 0;
   }
 
   int height(Node* root) {
