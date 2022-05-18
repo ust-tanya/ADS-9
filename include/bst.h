@@ -59,7 +59,7 @@ class BST {
       return height(root);
   }
   int search(T x) {
-      return searchNode(root, x);
+      return searchValue(root, x);
   }
 };
 
