@@ -35,7 +35,7 @@ class BST {
           if (root->val > x) return searchNode(root->left, x);
           if (root->val < x) return searchNode(root->right, x);
       }
-      return;
+      return 0;
   }
 
   int height(Node* root) {
@@ -48,7 +48,7 @@ class BST {
       else
         return lt + 1;
   }
- 
+
  public:
   BST():root(nullptr) {}
   void add(T val) {
