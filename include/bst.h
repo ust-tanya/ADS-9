@@ -11,8 +11,7 @@ class BST {
     Node *right;
     Node *left;
     int count;
-};
- private:
+  };
   Node *root;
   Node *addNode(Node *root, T x) {
       if (root == nullptr) {
