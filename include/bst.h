@@ -7,43 +7,43 @@ template<typename T>
 class BST {
  private:
   struct Node {
-    T val;
+    T value;
     Node *rght;
     Node *lft;
     int count;
   };
-  Node *rt;
-  Node *addNode(Node *rt, T x) {
-      if (rt == nullptr) {
-          rt = new Node;
-          rt->val = x;
-          rt->lft = nullptr;
-          rt->rght = nullptr;
+  Node *root;
+  Node *addNode(Node *root, T x) {
+      if (root == nullptr) {
+          root = new Node;
+          root->value = x;
+          root->lft = nullptr;
+          root->rght = nullptr;
       } else {
-          if (rt->val > x) rt->lft = addNode(rt->lft, x);
-          if (rt->val < x) rt->rght = addNode(rt->rght, x);
-          if (rt->val == x) (rt->count)++;
+          if (root->value > x) root->lft = addNode(root->lft, x);
+          if (root->value < x) root->rght = addNode(root->rght, x);
+          if (root->value == x) (root->count)++;
       }
-      return rt;
+      return root;
     }
 
-  int searchValue(Node* rt, T x) {
-    if (rt == nullptr) {
+  int searchValue(Node* root, T x) {
+    if (root == nullptr) {
       return 0;
-    } else if (rt->val == x) {
-        return rt->count;
-    } else if (rt->val < x) {
-        return searchValue(rt->rght, x);
+    } else if (root->value == x) {
+        return root->count;
+    } else if (root->value < x) {
+        return searchValue(root->rght, x);
     } else {
-        return searchValue(rt->lft, x);
+        return searchValue(root->lft, x);
     }
   }
 
-  int height(Node* rt) {
-      if (rt == nullptr)
+  int height(Node* root) {
+      if (root == nullptr)
         return 0;
-      if (rt->lft == nullptr && rt->rght == nullptr) return 0;
-      int rt = height(rt->rght), lt = height(rt->lft);
+      if (root->lft == nullptr && root->rght == nullptr) return 0;
+      int rt = height(root->rght), lt = height(root->lft);
       if (rt > lt)
         return rt + 1;
       else
@@ -51,15 +51,15 @@ class BST {
   }
 
  public:
-  BST():rt(nullptr) {}
+  BST():root(nullptr) {}
   void add(T x) {
-      rt = addNode(rt, x);
+      root = addNode(root, x);
   }
   int depth() {
-      return height(rt);
+      return height(root);
   }
   int search(T x) {
-      return searchValue(rt, x) + 1;
+      return searchValue(root, x) + 1;
   }
 };
 
