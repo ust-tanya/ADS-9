@@ -6,22 +6,20 @@
 #include  "bst.h"
 
 BST<std::string> makeTree(const char* filename) {
-  std::ifstream file(filename);
-  BST<std::string> bst;
-  std::string wrd = "";
-  int c;
+    std::ifstream file(filename);
+    BST<std::string> tree;
+    std::string word = "";
+    int count = 0;
 // читаем содержимое файла посимвольно
-  while (!file.eof()) {
-  char sym = file.get();
-  if ((sym >= 'a' && sym <= 'z') || (sym >= 'A' && sym <= 'Z')) {
-  if (sym >= 'A' && sym <= 'Z')
-  sym += 32;
-  wrd += sym;
-  c++;
-  } else if (c != 0) {
-  wrd = "";  c = 0; bst.add(wrd);
-  }
-  }
-  file.close();
-  return bst;
+    while (!file.eof()) {
+        char ch = file.get();
+        if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+            if (ch >= 'A' && ch <= 'Z') ch += 32;
+            word += ch;
+            count++;
+        } else if (count > 0) { tree.add(word); word = "";  count = 0;}
+    }
+
+    file.close();
+    return tree;
 }
